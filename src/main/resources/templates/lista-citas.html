@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Citas</title></head>
+<body>
+<h2>Listado de Citas</h2>
+<a href="/citas/nueva">Nueva Cita</a>
+<table border="1">
+    <tr>
+        <th>Paciente</th><th>Doctor</th><th>Consultorio</th><th>Horario</th>
+    </tr>
+    <tr th:each="c : ${citas}">
+        <td th:text="${c.nombrePaciente}"></td>
+        <td th:text="${c.doctor}"></td>
+        <td th:text="${c.consultorio.numero} + ' - Piso ' + ${c.consultorio.piso}"></td>
+        <td th:text="${#dates.format(c.horario, 'yyyy-MM-dd HH:mm')}"></td>
+    </tr>
+</table>
+</body>
+</html>
